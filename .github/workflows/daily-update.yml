@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update timestamp file with Supreeth's email (22f3001903@ds.study.iitm.ac.in)
         run: |
@@ -19,4 +21,4 @@ jobs:
           git config --global user.email "actions@github.com"
           git add status.txt
           git commit -m "Daily update: automated by GitHub Actions for DevSync" || echo "No changes to commit"
-          git push
+          git push --allow-empty
